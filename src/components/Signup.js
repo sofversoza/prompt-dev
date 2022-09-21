@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react'
-import { Card, Form, Button, Alert } from 'react-bootstrap'
+import { Alert } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
+import "../styles/Forms.css"
 
 function Signup() {
   const emailRef = useRef()
@@ -32,34 +33,39 @@ function Signup() {
   }
 
   return (
-    <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">Sign Up</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id='email'>
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
-            </Form.Group>
-            <Form.Group id='password'>
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
-            </Form.Group>
-            <Form.Group id='password-confirm'>
-              <Form.Label>Confirm Password</Form.Label>
-              <Form.Control type="password" ref={passwordConfirmRef} required />
-            </Form.Group>
-            <Button disabled={loading} className='w-100 mt-4' type='submit'>
-              Sign Up
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
-      <div className='w-100 text-center mt-2'>
+    <div className="form-container">
+      <h2>Join prompt.</h2>
+      {error && <Alert variant="danger">{error}</Alert>}
+      <form onSubmit={handleSubmit}>
+        <input 
+          placeholder='Email' 
+          type='email' 
+          name='email'
+          ref={emailRef} 
+          required
+        />
+        <input 
+          placeholder='Password' 
+          type='password' 
+          name='password'
+          ref={passwordRef} 
+          required
+        />
+        <input 
+          placeholder='Confirm password' 
+          type='password' 
+          name='password-confirm'
+          ref={passwordConfirmRef} 
+          required
+        />
+        <button type='submit' disabled={loading}>
+          Sign up
+        </button>
+			</form>
+      <div>
         Already have an account? <Link to="/login">Log In</Link>
       </div>
-    </>
+    </div>
   )
 }
 

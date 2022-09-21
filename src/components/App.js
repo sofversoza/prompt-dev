@@ -2,10 +2,10 @@ import Signup from "./Signup"
 import { AuthProvider } from '../contexts/AuthContext'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Dashboard from "../pages/Dashboard"
-import Login from "./Login"
 import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
+import Login from "./Login"
 
 function App() {
   return (
