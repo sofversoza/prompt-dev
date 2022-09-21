@@ -1,0 +1,14 @@
+.landing {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing span, .landing a:hover {
+  color: rgb(105, 102, 173);
+}
+.landing h1, .landing a {
+  color: rgb(121, 122, 123);
+}

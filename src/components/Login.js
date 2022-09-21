@@ -28,33 +28,35 @@ export default function Login() {
   }
 
   return (
-    <div className="form-container">
-      <h2>Login to prompt.</h2>
-      {error && <Alert variant="danger">{error}</Alert>}
-      <form onSubmit={handleSubmit}>
-        <input 
-          placeholder='Email address' 
-          type='email' 
-          name='email'
-          ref={emailRef} 
-          required
-        />
-        <input 
-          placeholder='Password' 
-          type='password' 
-          name='password'
-          ref={passwordRef} 
-          required
-        />
-        <button type='submit' disabled={loading}>
-          Log in
-        </button>
-			</form>
-      <div>
-        <Link to="/forgot-password">Forgot Password?</Link>
-      </div>
-      <div>
-        Need an account? <Link to="/signup">Sign Up</Link>
+    <div className="form">
+      <div className="container-items">
+        <h2>Login to prompt.</h2>
+        {error && <Alert variant="danger">{error}</Alert>}
+        <form onSubmit={handleSubmit}>
+          <input 
+            placeholder='Email address' 
+            type='email' 
+            name='email'
+            ref={emailRef} 
+            required
+          />
+          <input 
+            placeholder='Password' 
+            type='password' 
+            name='password'
+            ref={passwordRef} 
+            required
+          />
+          <button type='submit' disabled={loading}>
+            Log in
+          </button>
+        </form>
+        <div>
+          <Link to="/forgot-password">Forgot Password?</Link>
+        </div>
+        <div>
+          Need an account? <Link to="/signup">Sign Up</Link>
+        </div>
       </div>
     </div>
   )

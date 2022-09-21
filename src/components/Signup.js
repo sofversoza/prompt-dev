@@ -33,37 +33,39 @@ function Signup() {
   }
 
   return (
-    <div className="form-container">
-      <h2>Join prompt.</h2>
-      {error && <Alert variant="danger">{error}</Alert>}
-      <form onSubmit={handleSubmit}>
-        <input 
-          placeholder='Email' 
-          type='email' 
-          name='email'
-          ref={emailRef} 
-          required
-        />
-        <input 
-          placeholder='Password' 
-          type='password' 
-          name='password'
-          ref={passwordRef} 
-          required
-        />
-        <input 
-          placeholder='Confirm password' 
-          type='password' 
-          name='password-confirm'
-          ref={passwordConfirmRef} 
-          required
-        />
-        <button type='submit' disabled={loading}>
-          Sign up
-        </button>
-			</form>
-      <div>
-        Already have an account? <Link to="/login">Log In</Link>
+    <div className="form">
+      <div className="container-items">
+        <h2>Join prompt.</h2>
+        {error && <Alert variant="danger">{error}</Alert>}
+        <form onSubmit={handleSubmit}>
+          <input 
+            placeholder='Email' 
+            type='email' 
+            name='email'
+            ref={emailRef} 
+            required
+          />
+          <input 
+            placeholder='Password' 
+            type='password' 
+            name='password'
+            ref={passwordRef} 
+            required
+          />
+          <input 
+            placeholder='Confirm password' 
+            type='password' 
+            name='password-confirm'
+            ref={passwordConfirmRef} 
+            required
+          />
+          <button type='submit' disabled={loading}>
+            Sign up
+          </button>
+        </form>
+        <div>
+          Already have an account? <Link to="/login">Log In</Link>
+        </div>
       </div>
     </div>
   )

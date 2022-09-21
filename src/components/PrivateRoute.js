@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navigate, Route } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 
 // if there's no current user, we'll be redirected to the login page
@@ -20,5 +20,5 @@ import { useAuth } from '../contexts/AuthContext'
 
 export default function PrivateRoute({ children }) {
   const { currentUser } = useAuth()
-  return currentUser ? children : <Navigate to="/login" />
+  return currentUser ? children : <Navigate to="/landing-page" />
 }

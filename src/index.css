@@ -1,20 +1,43 @@
+/* font-family: 'Karla', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400&display=swap');
+
+html, body, #root {
+  height: 100%;
+}
+
 * {
   margin: 0;
-  padding: 0;
   box-sizing: border-box;
+  font-family: 'Karla', sans-serif;
+  font-weight: 400;
   /* outline: 1px solid red; */
 }
 
+hr {
+  border: none;
+  border-top: 0.5px solid rgb(222, 217, 217);
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+p {
+  font-weight: 300;
+  font-size: 1em;
+  word-spacing: 1px;
+}
+
 /* helper classes starts */
-.container {
+/* .container {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 90vh;
-}
+} */
 
-.container-items {
+/* .container-items {
   width: 100%;
   max-width: 440px;
-}
+} */
 /* helper classes ends */

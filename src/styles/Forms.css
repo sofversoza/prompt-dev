@@ -1,19 +1,28 @@
 /* font-family: 'Karla', sans-serif; */
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400&display=swap');
 
-.form-container {
-  font-family: 'Karla', sans-serif;
-  font-size: 1.2em;
+.container-items {
+  width: 100%;
+  max-width: 440px;
 }
 
-.form-container h2 {
+.form {
+  font-family: 'Karla', sans-serif;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+}
+
+.form h2 {
   text-align: center;
   margin-bottom: 10%;
   font-size: 2em;
   font-weight: 300;
 }
 
-.form-container button {
+.form button {
   border-radius: 3px;
   color: #fff;
   letter-spacing: 1px;
@@ -25,14 +34,14 @@
   margin: 5% 0;
   width: 100%;
 }
-.form-container button:hover {
+.form button:hover {
   background-color: rgba(97, 89, 151, 0.55);
 }
 
-.form-container a {
+.form a {
   color: rgba(97, 89, 151, 0.8);
 }
-.form-container a:hover {
+.form a:hover {
   color: rgba(97, 89, 151, 0.6);
 }
 

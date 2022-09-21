@@ -29,7 +29,7 @@ function UpdateProfile() {
       promises.push(updatePassword(passwordRef.current.value))
     }
 
-    // if all of our promises finish ^^ then this below will run
+    // if all of our promises finish ^^ then this will run
     Promise.all(promises).then(() => {
       navigate("/")
     })

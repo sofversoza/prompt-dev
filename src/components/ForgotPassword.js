@@ -27,30 +27,32 @@ function ForgotPassword() {
   }
 
   return (
-    <div className="form-container">
-      <h2 className="text-center mb-4">Password Reset</h2>
-      {error && <Alert variant="danger">{error}</Alert>}
-      {message && <Alert variant="success">{message}</Alert>}
-      <form onSubmit={handleSubmit}>
-      <input 
-        placeholder='Email' 
-        type='email' 
-        name='email'
-        ref={emailRef} 
-        required
-      />
-      <button
-        disabled={loading}
-        type='submit'
-      >
-        Reset Password
-      </button>
-      </form>
-      <div>
-        <Link to="/login">Back to Login</Link>
-      </div>
-      <div>
-        Need an account? <Link to="/signup">Sign Up</Link>
+    <div className="form">
+      <div className="container-items">
+        <h2 className="text-center mb-4">Reset your password</h2>
+        {error && <Alert variant="danger">{error}</Alert>}
+        {message && <Alert variant="success">{message}</Alert>}
+        <form onSubmit={handleSubmit}>
+        <input 
+          placeholder='Email' 
+          type='email' 
+          name='email'
+          ref={emailRef} 
+          required
+        />
+        <button
+          disabled={loading}
+          type='submit'
+        >
+          Reset Password
+        </button>
+        </form>
+        <div>
+          <Link to="/login">Back to Login</Link>
+        </div>
+        <div>
+          Need an account? <Link to="/signup">Sign Up</Link>
+        </div>
       </div>
     </div>
   )
