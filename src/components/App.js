@@ -1,6 +1,6 @@
 import Signup from "./Signup"
 import { AuthProvider } from '../contexts/AuthContext'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Dashboard from "../pages/Dashboard"
 import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
@@ -11,17 +11,25 @@ function App() {
   return (
       <div className="container">
         <div className="container-items">
-          <Router>
+          <BrowserRouter>
             <AuthProvider>
-              <Switch>
-                <PrivateRoute exact path="/" component={Dashboard} />
-                <PrivateRoute path="/update-profile" component={UpdateProfile} />
-                <Route path="/signup" component={Signup} />
-                <Route path="/login" component={Login} />
-                <Route path="/forgot-password" component={ForgotPassword} />
-              </Switch>
+              <Routes>
+                <Route path="/" element={
+                  <PrivateRoute>
+                    <Dashboard />
+                  </PrivateRoute>
+                }/>
+                <Route path="/update-profile" element={
+                  <PrivateRoute>
+                    <UpdateProfile />
+                  </PrivateRoute>
+                }/>
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+              </Routes>
             </AuthProvider>
-          </Router>
+          </BrowserRouter>
         </div>
       </div>
   );

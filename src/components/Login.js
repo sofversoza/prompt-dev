@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Alert } from 'react-bootstrap'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import "../styles/Forms.css"
 
@@ -10,7 +10,7 @@ export default function Login() {
   const { login } = useAuth()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const history = useHistory()
+  const navigate = useNavigate()
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -19,7 +19,7 @@ export default function Login() {
       setError('')
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      history.push("/")
+      navigate("/")
     } catch {
       setError('Failed to sign in')
     }
@@ -29,7 +29,7 @@ export default function Login() {
 
   return (
     <div className="form-container">
-      <h2>Log into prompt.</h2>
+      <h2>Login to prompt.</h2>
       {error && <Alert variant="danger">{error}</Alert>}
       <form onSubmit={handleSubmit}>
         <input 

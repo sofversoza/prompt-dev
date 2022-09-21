@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Card, Form, Button, Alert } from 'react-bootstrap'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 
 function UpdateProfile() {
@@ -10,7 +10,7 @@ function UpdateProfile() {
   const { currentUser, updatePassword, updateEmail } = useAuth()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const history = useHistory()
+  const navigate = useNavigate()
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -31,7 +31,7 @@ function UpdateProfile() {
 
     // if all of our promises finish ^^ then this below will run
     Promise.all(promises).then(() => {
-      history.push("/")
+      navigate("/")
     })
     .catch(() => {
       setError("Failed to update account")
