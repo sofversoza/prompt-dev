@@ -13,7 +13,7 @@
 }
 
 .navbar nav {
-  height: 80px;
+  height: 85px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -106,8 +106,6 @@ a.right-links:last-child {
 .homepage {
   display: flex;
   border-top: 0.5px solid rgb(222, 217, 217);
-  align-items: center;
-  justify-content: center;
   margin: 3em 0;
 }
 

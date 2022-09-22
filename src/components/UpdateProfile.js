@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { Card, Form, Button, Alert } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
+import '../styles/Forms.css'
 
 function UpdateProfile() {
   const emailRef = useRef()
@@ -43,9 +44,37 @@ function UpdateProfile() {
 
   return (
     <>
-      <Card>
+      <form onSubmit={handleSubmit}>
+        <label>Email</label>
+        <input 
+          placeholder='Email' 
+          type='email' 
+          name='email'
+          ref={emailRef} 
+          required
+          defaultValue={currentUser.email}
+        />
+        <label>Password</label>
+        <input 
+          placeholder="Leave blank to keep the same" 
+          type='password' 
+          name='password'
+          ref={passwordRef} 
+        />
+        <label>Confirm Password</label>
+        <input 
+          placeholder="Leave blank to keep the same" 
+          type='password' 
+          name='password-confirm'
+          ref={passwordConfirmRef} 
+        />
+        <button disabled={loading} type='submit'>
+          Update
+        </button>
+      </form>
+
+      {/* <Card>
         <Card.Body>
-          <h2 className="text-center mb-4">Update Profile</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id='email'>
@@ -74,7 +103,7 @@ function UpdateProfile() {
       </Card>
       <div className='w-100 text-center mt-2'>
         <Link to="/login">Cancel</Link>
-      </div>
+      </div> */}
     </>
   )
 }

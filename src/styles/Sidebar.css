@@ -1,0 +1,124 @@
+/* 🍄 🍄 🍄 LEFT BAR STARTS 🍄 🍄 🍄*/
+.leftbar {
+  min-height: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  color: #333;
+  padding: 15px 15px;
+  border-right: 0.5px solid rgb(222, 217, 217);
+}
+
+.leftbar hr {
+  width: 55%;
+  margin: 3em auto;
+}
+
+.icon-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icons {
+  fill: rgb(66, 65, 65);
+  font-size: 1.8em;
+  margin: 15px auto;
+  cursor: pointer;
+}
+
+.smaller {
+  font-size: 1.55em!important;
+}
+
+.icon-themes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.violet {
+  fill: #58229aa0;
+}
+.matcha {
+  fill: #5B7E4E;
+}
+.fluff {
+  fill: #8693cc;
+}
+.hi {
+  height: 30px;
+  width: 30px;
+  background-color: pink;
+}
+/* 🍄 🍄 🍄 LEFT BAR ENDS🍄 🍄 🍄*/
+
+/* 🍄 🍄 🍄 RIGHT BAR STARTS 🍄 🍄*/
+.sidebar {
+  min-height: 1200px;
+  flex: 1;
+  color: #333;
+  padding: 15px 15px;
+  border-left: 0.5px solid rgb(222, 217, 217);
+}
+
+.sidebar-search {
+  margin: 20px 3px 10px 3px;
+  padding: 0 5px;
+}
+
+.sidebar-title {
+  font-family: 'acumin-pro-wide', sans-serif;
+  font-weight: 800;
+  font-size: 1em;
+  letter-spacing: -0.5px;
+  margin: 25px 0 0 0;
+}
+
+.sidebar-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-item > div {
+  padding: 8px 5px 8px 8px;
+}
+
+.sidebar-item > div > p {
+  font-size: 0.75em;
+  font-family: 'montserrat', sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: rgb(1, 55, 1);
+}
+.sidebar-item > div > p:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.sidebar-item > div > h6 {
+  font-size: 0.9em;
+  font-family: 'acumin-pro-wide', sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+}
+
+.chiptags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.chiptags a {
+  color: #565656;
+  text-decoration: none;
+  background: #b5c8d4;
+  font-size: 0.7em;
+  text-align: center;
+  min-width: 55px;
+  padding: 12px;
+  border-radius: 20px;
+  margin: 0.3em;
+}
+/* 🍄 🍄 🍄 RIGHT BAR ENDS🍄 🍄 🍄*/

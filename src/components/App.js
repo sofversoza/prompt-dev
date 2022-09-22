@@ -7,6 +7,8 @@ import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
 import Login from "./Login"
 import LandingPage from "../pages/LandingPage"
+import Profile from "../pages/Profile"
+import Settings from "../pages/Settings"
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/settings" element={<Settings />} />
           </Routes>
         </AuthProvider>
       </BrowserRouter>

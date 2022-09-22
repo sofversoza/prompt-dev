@@ -28,16 +28,19 @@ p {
   word-spacing: 1px;
 }
 
-/* helper classes starts */
-/* .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 90vh;
-} */
+button {
+  border-radius: 50px !important;
+  color: #fff;
+  font-weight: 200;
+  cursor: pointer;
+  border: none;
+  background-color: rgba(97, 89, 151, 0.7);
+  padding: 13px 18px;
+  margin: 3% 0 !important;
+  /* width: 100%; */
+}
 
-/* .container-items {
-  width: 100%;
-  max-width: 440px;
-} */
-/* helper classes ends */
+.page-title {
+  font-size: 1.8em;
+  margin-bottom: -1%;
+}
