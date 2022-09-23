@@ -7,7 +7,7 @@ function UpdateProfile() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
-  const { currentUser, updatePassword, updateEmail } = useAuth()
+  const { currentUser, changePassword, changeEmail } = useAuth()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
@@ -23,10 +23,10 @@ function UpdateProfile() {
     setError("")
 
     if (emailRef.current.value !== currentUser.email) {
-      promises.push(updateEmail(emailRef.current.value))
+      promises.push(changeEmail(emailRef.current.value))
     }
     if (passwordRef.current.value) {
-      promises.push(updatePassword(passwordRef.current.value))
+      promises.push(changePassword(passwordRef.current.value))
     }
 
     // if all of our promises finish ^^ then this will run
@@ -70,9 +70,9 @@ function UpdateProfile() {
         <button disabled={loading} type='submit'>
           Update
         </button>
-        <button onClick={navigate("/")}>
+        {/* <button onClick={navigate("/")}>
           Cancel
-        </button>
+        </button> */}
       </form>
     </>
   )

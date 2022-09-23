@@ -14,7 +14,7 @@ export default function Settings() {
         <hr />
         <div className="account-settings">
           <h5>Account</h5>
-          <UpdateProfile />
+          {<UpdateProfile />}
         </div>
       </div>  
     </>
