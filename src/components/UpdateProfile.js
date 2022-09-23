@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Card, Form, Button, Alert } from 'react-bootstrap'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import '../styles/Forms.css'
 
@@ -71,39 +70,10 @@ function UpdateProfile() {
         <button disabled={loading} type='submit'>
           Update
         </button>
+        <button onClick={navigate("/")}>
+          Cancel
+        </button>
       </form>
-
-      {/* <Card>
-        <Card.Body>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id='email'>
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required 
-                defaultValue={currentUser.email}
-              />
-            </Form.Group>
-            <Form.Group id='password'>
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef}
-                placeholder="Leave blank to keep the same"
-              />
-            </Form.Group>
-            <Form.Group id='password-confirm'>
-              <Form.Label>Confirm Password</Form.Label>
-              <Form.Control type="password" ref={passwordConfirmRef}
-                placeholder="Leave blank to keep the same"
-              />
-            </Form.Group>
-            <Button disabled={loading} className='w-100 mt-4' type='submit'>
-              Update
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
-      <div className='w-100 text-center mt-2'>
-        <Link to="/login">Cancel</Link>
-      </div> */}
     </>
   )
 }

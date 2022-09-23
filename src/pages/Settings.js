@@ -16,7 +16,7 @@ export default function Settings() {
           <h5>Account</h5>
           <UpdateProfile />
         </div>
-      </div>
+      </div>  
     </>
   )
 }

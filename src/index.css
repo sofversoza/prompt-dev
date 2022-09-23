@@ -1,5 +1,14 @@
 /* font-family: 'Karla', sans-serif; */
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400&display=swap');
+@font-face {
+  font-family: "Buljirya";
+  src: url("../src/assets/Buljirya.woff") format("woff");
+}
+@font-face {
+  font-family: "Brolimo";
+  src: url("../src/assets/BROLIMO-Regular.woff") format("woff");
+}
+
 
 html, body, #root {
   height: 100%;
@@ -36,7 +45,7 @@ button {
   border: none;
   background-color: rgba(97, 89, 151, 0.7);
   padding: 13px 18px;
-  margin: 3% 0 !important;
+  margin: 3% 0.5% !important;
   /* width: 100%; */
 }
 
