@@ -8,12 +8,10 @@ export default function Navbar() {
   const navigate = useNavigate()
 
   async function handleLogout() {
-    // setError("")
     try {
       await logout()
       navigate("/landing-page")
     } catch {
-      // setError("Failed to Log Out")
     }
   }
 

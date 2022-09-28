@@ -53,3 +53,10 @@ button {
   font-size: 1.8em;
   margin-bottom: -1%;
 }
+.page-container {
+  width: 75%;
+  margin: 8% auto;
+}
+.page-intro {
+  margin-bottom: 4%;
+}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import SplitScreen from "../components/styled/SplitScreen.style"
 import Categories from '../components/Categories'
 import Header from '../components/Header'
 import Navbar from '../components/Navbar'
@@ -14,8 +15,10 @@ function Home() {
       <Header />
       <Categories />
       <div className="homepage">
-        <LeftBar />
-        <RightBar />
+        <SplitScreen>
+          <LeftBar />
+          <RightBar />
+        </SplitScreen>
       </div>
     </>
   )

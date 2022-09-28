@@ -13,21 +13,17 @@ export default function RightBar() {
   return (
     <div className="leftbar">
       <div className="icon-cont">
-        <ImQuill className="icons smaller" />
+        <Link to="/create">
+          <ImQuill className="icons smaller" />
+        </Link>
+        <Link to="/all-prompts">
+          <GiSpellBook className="icons" />
+        </Link>
         <BsPaperclip className="icons"/>
-        <GiSpellBook className="icons" />
         <Link to="/settings">
           <MdSettingsSuggest className="icons" />
         </Link>
       </div>
-
-      {/* <hr/>
-      <div className="icon-themes">
-        <GiFairyWand className="icons smaller" />
-        <BsFillDropletFill className="icons smaller violet" />
-        <BsFillDropletFill className="icons smaller matcha" />
-        <BsFillDropletFill className="icons smaller fluff" />
-      </div> */}
     </div>
   )
 }
