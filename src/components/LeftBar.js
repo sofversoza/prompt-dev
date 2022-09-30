@@ -4,8 +4,6 @@ import { GiSpellBook } from 'react-icons/gi'
 import { BsPaperclip } from 'react-icons/bs'
 import { ImQuill } from 'react-icons/im'
 import { MdSettingsSuggest } from 'react-icons/md'
-import { BsFillDropletFill } from 'react-icons/bs'
-import { GiFairyWand } from 'react-icons/gi'
 import '../styles/Sidebar.css'
 
 export default function RightBar() {

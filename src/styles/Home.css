@@ -98,10 +98,19 @@ a.right-links:last-child {
 }
 /* 🍄 🍄 🍄 CATEGORIES ENDS 🍄 🍄 🍄*/
 /* 🍄 🍄 🍄 HOMEPAGE STARTS 🍄 🍄 🍄*/
-/* .homepage {
+.homepage {
   display: flex;
   border-top: 0.5px solid rgb(222, 217, 217);
   margin: 3em 0;
-} */
+}
+
+/* All Component */
+.middle {
+  display: flex;
+  flex: 4;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 5% 3%;
+}
 
 /* 🍄 🍄 🍄 HOMEPAGE ENDS 🍄 🍄 🍄*/

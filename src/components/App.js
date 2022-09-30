@@ -10,7 +10,8 @@ import LandingPage from "../pages/LandingPage"
 import Profile from "../pages/Profile"
 import Settings from "../pages/Settings"
 import Create from "../pages/Create"
-import Read from "../pages/Read"
+import Read from "./PromptList"
+import PromptList from './PromptList'
 
 function App() {
   return (
@@ -35,7 +36,8 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/create" element={<Create />} />
-            <Route path="/all-prompts" element={<Read />} />
+            {/* <Route path="/all-prompts" element={<Get />} /> */}
+            {/* <Route path="/prompts/*" element={<Create />}/> */}
           </Routes>
         </AuthProvider>
       </BrowserRouter>

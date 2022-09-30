@@ -57,7 +57,7 @@
 /* 🍄 🍄 🍄 RIGHT BAR STARTS 🍄 🍄*/
 .sidebar {
   min-height: 1200px;
-  flex: 1;
+  flex: 2;
   color: #333;
   padding: 15px 15px;
   border-left: 0.5px solid rgb(222, 217, 217);

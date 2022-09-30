@@ -7,9 +7,6 @@ export default function RightBar() {
 
   return (
     <div className="sidebar">
-      {/* <div className="sidebar-search">
-        <Search />
-      </div> */}
       <div className="sidebar-item">
         <span className="sidebar-title">Trending Prompts</span>
         <div>
@@ -35,9 +32,6 @@ export default function RightBar() {
       </div>
       <div className="sidebar-item">
         <span className="sidebar-title">Recent Prompts</span>
-        {/* {error && <p className="error">{error}</p>} */}
-        {/* {isPending && <p className="loading">Loading...</p>} */}
-        {/* {data && <SidebarPromptList prompts={data} />} */}
       </div>
       <div className="sidebar-item">
         <span className="sidebar-title">Recently Bookmarked</span>
