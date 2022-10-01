@@ -2,7 +2,7 @@ import React from 'react'
 import '../styles/Home.css'
 
 export default function Categories() {
-  const links = ['For you', 'Gratitude','Poems', 'Photos', 'Plays', 'Love Letter', 'Literary Analysis', 'Persuasive', 'Expository', 'Narrative' ]
+  const links = ['Poems', 'Gratitude', 'Photos', 'Plays', 'Love Letter', 'Literary Analysis', 'Persuasive', 'Expository', 'Narrative', 'Short Story' ]
 
   return (
     <div className="category-links">

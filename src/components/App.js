@@ -12,10 +12,12 @@ import Settings from "../pages/Settings"
 import Create from "../pages/Create"
 import Read from "./PromptList"
 import PromptList from './PromptList'
+import Prompt from '../pages/Prompt'
+import Navbar from './Navbar'
 
 function App() {
   return (
-    <>
+    <div className="App">
       <BrowserRouter>
         <AuthProvider>
           <Routes>
@@ -36,12 +38,12 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/create" element={<Create />} />
-            {/* <Route path="/all-prompts" element={<Get />} /> */}
-            {/* <Route path="/prompts/*" element={<Create />}/> */}
+            <Route path="/prompts" element={<PromptList />} />
+            <Route path="/prompts/:id" element={<Prompt />} />
           </Routes>
         </AuthProvider>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 

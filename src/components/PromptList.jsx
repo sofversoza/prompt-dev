@@ -1,32 +1,51 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { collection, getDocs } from "firebase/firestore"
+import { db } from "../firebase"
 import Navbar from './Navbar'
 
-export default function PromptList({ prompts }) {
-  if (prompts.length === 0) {
-    return <div className="error">No prompts to load...</div>
-  }
+export default function PromptList() {
+  const [data, setData] = useState(null)
+  const [isPending, setIsPending] = useState(false)
+  const [error, setError] = useState(false)
 
-  const allPrompts = prompts.map((prompt) => {
-    return (
-      <div key={prompt.id}>
-        <h3>{prompt.title}</h3>
-        <p>{prompt.description.substring(0, 100)}...</p>
-        <span>{prompt.tags}</span>
-        <Link to={`/prompts/${prompt.id}`}>Use Prompt</Link>
-      </div>
-    )
-  })
+  useEffect(() => {
+    setIsPending(true)
+    const promptRef = (collection(db, "prompts"))
+
+    getDocs(promptRef).then((snapshot) => {
+      if (snapshot.empty) {
+        setError("No prompts to load")
+        setIsPending(false)
+      } else {
+        let results = []
+        snapshot.forEach((doc) => {
+          // console.log(doc.id, doc.data())
+          results.push({id: doc.id, ...doc.data()})
+        })
+        setData(results)
+        setIsPending(false)
+      }
+    }).catch(err => {
+      setError(err.message)
+      setIsPending(false)
+    })
+  }, [])
+
 
   return (
     <>
-      <Navbar />
-      <div>
-        <Link>Back to Home</Link>
-        <h1>All Prompts</h1>
-        <hr />
-        {allPrompts}
-      </div>
+      {error && <p className="error">{error}</p>}
+      {isPending && <p className="loading">Loading...</p>}
+      {data && (
+        <>
+          <h4>{data.title}</h4>
+          <p>{data.description}</p>
+          {/* <ul>
+            {data.tags.map((tag)=> <li key={tag}>{tag}</li>)}
+          </ul> */}
+        </>
+      )}
     </>
   )
 }

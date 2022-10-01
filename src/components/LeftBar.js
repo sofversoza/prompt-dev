@@ -14,7 +14,7 @@ export default function RightBar() {
         <Link to="/create">
           <ImQuill className="icons smaller" />
         </Link>
-        <Link to="/all-prompts">
+        <Link to="/prompts">
           <GiSpellBook className="icons" />
         </Link>
         <BsPaperclip className="icons"/>
