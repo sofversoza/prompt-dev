@@ -2,9 +2,12 @@ import React, { useRef, useState } from 'react'
 import { Alert } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../contexts/OldAuthContext'
+import { auth } from "../firebase"
+import { sendPasswordResetEmail } from "firebase/auth"
 
 function ForgotPassword() {
-  const emailRef = useRef()
+  const [userEmail, setUserEmail] = useState("")
+
   const { resetPassword } = useAuth()
   const [error, setError] = useState('')
   const [message, setMessage] = useState('')
@@ -34,11 +37,10 @@ function ForgotPassword() {
         {message && <Alert variant="success">{message}</Alert>}
         <form onSubmit={handleSubmit}>
         <input 
+          required
           placeholder='Email' 
           type='email' 
-          name='email'
-          ref={emailRef} 
-          required
+          value={userEmail} 
         />
         <button
           disabled={loading}

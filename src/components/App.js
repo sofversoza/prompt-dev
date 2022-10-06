@@ -23,7 +23,7 @@ function App() {
             <Route path="/" element={user ? <Home /> : <LandingPage />} />
             <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
             <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
-            <Route path="/forgot-password" element={user && <ForgotPassword />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/update-profile" element={user && <UpdateProfile />} />
             <Route path="/profile" element={user && <Profile />} />
             <Route path="/settings" element={user && <Settings />} />
