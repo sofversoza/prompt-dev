@@ -1,28 +1,17 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { Alert } from 'react-bootstrap'
-import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
+import { Link } from 'react-router-dom'
+import { useLogin } from "../hooks/useLogin"
 import "../styles/Forms.css"
 
 export default function Login() {
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const { login } = useAuth()
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const { error, loading, login } = useLogin()
 
-  async function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    try {
-      setError('')
-      setLoading(true)
-      await login(emailRef.current.value, passwordRef.current.value)
-      navigate("/")
-    } catch {
-      setError('Failed to sign in')
-    }
-    setLoading(false)
+    login(email, password)
   }
 
   return (
@@ -32,18 +21,18 @@ export default function Login() {
         {error && <Alert variant="danger">{error}</Alert>}
         <form onSubmit={handleSubmit}>
           <input 
+            required
             placeholder='Email address' 
             type='email' 
-            name='email'
-            ref={emailRef} 
-            required
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
           />
           <input 
+            required
             placeholder='Password' 
             type='password' 
-            name='password'
-            ref={passwordRef} 
-            required
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
           />
           <button type='submit' disabled={loading}>
             Log in

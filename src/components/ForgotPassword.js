@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Alert } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../contexts/OldAuthContext'
 
 function ForgotPassword() {
   const emailRef = useRef()

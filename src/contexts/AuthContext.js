@@ -1,73 +1,48 @@
-import React, { createContext, useContext, useState, useEffect } from "react"
+import { createContext, useReducer, useEffect } from "react"
 import { auth } from '../firebase'
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
-  sendPasswordResetEmail,
-  updateEmail,
-  updatePassword
-} from "firebase/auth"
+import { onAuthStateChanged } from "firebase/auth"
 
-const AuthContext = createContext()
+export const AuthContext = createContext()
 
-// this function will allow us to use all the context below
-export function useAuth() {
-  return useContext(AuthContext)
+export const authReducer = (state, action) => {
+  switch (action.type) {
+    case "LOGIN":
+      return { ...state, user: action.payload }
+    case "LOGOUT":
+      return { ...state, user: null }
+    case "AUTH_IS_READY":
+      return { user: action.payload, authIsReady: true }
+    default:
+      return state    
+  }
 }
 
-export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState()
-  const [loading, setLoading] = useState(true)
+// the children is the root component which is the App component. Meaning this function will wrap our whole Application and provide our global state including the user.
+export const AuthContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(authReducer, {
+    user: null,
+    authIsReady: false
+  })
 
-  function signup(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password)
-  }
-
-  function login(email, password) {
-    return signInWithEmailAndPassword(auth, email, password)
-  }
-
-  function logout() {
-    return signOut(auth)
-  }
-
-  function resetPassword(email) {
-    return sendPasswordResetEmail(auth, email)
-  }
-
-  function changeEmail(email) {
-    return updateEmail(auth.currentUser, email)
-  }
-
-  function changePassword(password) {
-    return updatePassword(auth.currentUser, password)
-  }
-
-  // we only want onAuthStateChanged to run once so we'll use useEffect
+  // fires right away to check if the user is already logged in or not
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user)
-      setLoading(false)
-    })
+    const unsub = onAuthStateChanged(auth, user => {
+      // the user in (payload: user) will either be the logged in user or null
+      dispatch({ type: "AUTH_IS_READY", payload: user })
 
-    return unsubscribe
+      // we unsubscribe from changes so this function doesn't fire again when there's Auth state change
+      unsub()
+    })
   }, [])
 
-  const value = {
-    currentUser,
-    signup,
-    login,
-    logout,
-    resetPassword,
-    changeEmail,
-    changePassword
-  }
-  
+  console.log("AuthContext state:", state)
+
   return (
-    <AuthContext.Provider value={value}>
-      {!loading && children}
+    <AuthContext.Provider value={{ ...state, dispatch }}>
+      { children }
     </AuthContext.Provider>
   )
 }
+
+
+

@@ -12,6 +12,7 @@
 html, body, #root {
   height: 100%;
 }
+
 .App {
   min-height: 100%;
 }
@@ -51,17 +52,6 @@ button {
   /* width: 100%; */
 }
 
-.page-title {
-  font-size: 1.8em;
-  margin-bottom: -1%;
-}
-.page-container {
-  width: 75%;
-  margin: 8% auto;
-}
-.page-intro {
-  margin-bottom: 4%;
-}
 .loading, .error {
   text-align: center;
   margin: 50px auto;

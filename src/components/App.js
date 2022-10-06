@@ -1,7 +1,6 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { AuthProvider } from '../contexts/AuthContext'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { useAuthContext } from "../hooks/useAuthContext"
 import Home from "../pages/Home"
-import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
 import Login from "./Login"
@@ -16,33 +15,26 @@ import Prompt from '../pages/Prompt'
 import Navbar from './Navbar'
 
 function App() {
+  const { user, authIsReady } = useAuthContext()
+
   return (
     <div className="App">
-      <BrowserRouter>
-        <AuthProvider>
+      {authIsReady && (
+        <BrowserRouter>
           <Routes>
-            <Route path="/" element={
-              <PrivateRoute>
-                <Home />
-              </PrivateRoute>
-            }/>
-            <Route path="/update-profile" element={
-              <PrivateRoute>
-                <UpdateProfile />
-              </PrivateRoute>
-            }/>
-            <Route path="/landing-page" element={<LandingPage />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/create" element={<Create />} />
-            <Route path="/prompts" element={<PromptList />} />
-            <Route path="/prompts/:id" element={<Prompt />} />
+            <Route path="/" element={user ? <Home /> : <LandingPage />} />
+            <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
+            <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
+            <Route path="/forgot-password" element={user && <ForgotPassword />} />
+            <Route path="/update-profile" element={user && <UpdateProfile />} />
+            <Route path="/profile" element={user && <Profile />} />
+            <Route path="/settings" element={user && <Settings />} />
+            <Route path="/create" element={user && <Create />} />
+            <Route path="/prompts" element={user && <PromptList />} />
+            <Route path="/prompts/:id" element={user && <Prompt />} />
           </Routes>
-        </AuthProvider>
-      </BrowserRouter>
+        </BrowserRouter>
+      )}
     </div>
   );
 }

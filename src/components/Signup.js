@@ -1,35 +1,18 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { Alert } from 'react-bootstrap'
-import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
+import { Link } from 'react-router-dom'
+import { useSignup } from "../hooks/useSignup"
 import "../styles/Forms.css"
 
 function Signup() {
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const passwordConfirmRef = useRef()
-  const { signup } = useAuth()
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [confirmPass, setConfirmPass] = useState("")
+  const { error, loading, signup } = useSignup()
 
-  async function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault()
-
-    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError('Passwords do not match')
-    }
-
-    try {
-      setError('')
-      setLoading(true)
-      await signup(emailRef.current.value, passwordRef.current.value)
-      navigate("/")
-    } catch {
-      setError('Failed to create an account')
-    }
-
-    setLoading(false)
+    signup(email, password)
   }
 
   return (
@@ -39,25 +22,25 @@ function Signup() {
         {error && <Alert variant="danger">{error}</Alert>}
         <form onSubmit={handleSubmit}>
           <input 
-            placeholder='Email' 
-            type='email' 
-            name='email'
-            ref={emailRef} 
             required
+            type='email' 
+            placeholder='Email' 
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
           />
           <input 
+            required
             placeholder='Password' 
             type='password' 
-            name='password'
-            ref={passwordRef} 
-            required
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
           />
           <input 
+            required
             placeholder='Confirm password' 
             type='password' 
-            name='password-confirm'
-            ref={passwordConfirmRef} 
-            required
+            onChange={(e) => setConfirmPass(e.target.value)}
+            value={confirmPass}
           />
           <button type='submit' disabled={loading}>
             Sign up

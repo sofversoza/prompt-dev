@@ -1,44 +1,45 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useParams } from "react-router-dom"
-import { collection, getDoc, doc } from 'firebase/firestore'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../firebase'
-import Navbar from '../components/Navbar'
-import "../styles/PromptPage.css"
+import StyledHeader, { StyledTitle } from "../components/styled/StyledHeader"
+import "../styles/PageTemplate.css"
 
 export default function Create() {
-  // const { id } = useParams()
+  const [newPrompt, setNewPrompt] = useState("")
+  const navigate = useNavigate()
 
-  // const [data, setData] = useState(null)
-  // const [isPending, setIsPending] = useState(false)
-  // const [error, setError] = useState(false)
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const ref = collection(db, "prompts")
 
-  // useEffect(() => {
-  //   setIsPending(true)
-  //   const promptRef = doc(db, "poems", id)
+    await addDoc(ref, {
+      body: newPrompt
+    })
 
-  //   getDoc(promptRef).then((doc) => {
-  //     console.log(doc)
-  //   }) 
-  // }, [])
-
+    setNewPrompt("")
+    navigate("/prompts")
+  }
 
   return (
     <>
-      {/* {error && <p>{error}</p>}
-      {isPending && <p>Loading...</p>}
-      {data && (
-        <>
-          <Navbar />
-          <div> 
-            <Link to="/">Back to Home</Link>
-            <h1>{data.title}</h1>
-            <p>{data.description}</p>
-            <h1>Compose</h1>
-            <hr />
-          </div>
-        </>
-      )} */}
-      <h1>Compose</h1>
+      <StyledHeader>
+        <StyledTitle>Compose</StyledTitle>
+      </StyledHeader>
+      <div className="page-container">
+        <form onSubmit={handleSubmit}>
+          <label>
+            <span>prompt submission:</span>
+            <textarea 
+              required
+              type="text"
+              onChange={(e) => setNewPrompt(e.target.value)}
+              value={newPrompt}
+            />
+          </label>
+          <button>Add</button>
+        </form>
+      </div>
     </>
   )
 }

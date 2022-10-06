@@ -14,7 +14,7 @@ export default function All({ prompts }) {
           <h4>{prompt.title}</h4>
           <div>{prompt.description.substring(0, 100)}...</div>
           <span>{prompt.tags}</span>
-          <Link to="/prompts/:id">View prompt</Link>
+          {/* <Link to="/prompts/:id">View prompt</Link> */}
           {/* <button onClick={() => navigate("/prompts/:id")}>View Prompt</button> */}
         </div>
       ))}

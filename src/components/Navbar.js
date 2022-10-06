@@ -1,19 +1,10 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
+import { Link } from 'react-router-dom'
+import { useLogout } from "../hooks/useLogout"
 import '../styles/Home.css'
 
 export default function Navbar() {
-  const { currentUser, logout } = useAuth()
-  const navigate = useNavigate()
-
-  async function handleLogout() {
-    try {
-      await logout()
-      navigate("/landing-page")
-    } catch {
-    }
-  }
+	const { logout } = useLogout()
 
   return (
 		<div className='navbar'>
@@ -30,7 +21,7 @@ export default function Navbar() {
 				<Link to='/' className='right-links'>
 					<h1>CONTACT</h1>
 				</Link>
-				<Link onClick={handleLogout} className='right-links'>
+				<Link onClick={logout} className='right-links'>
 					<h1>LOG OUT</h1>
 				</Link>
 			</nav>

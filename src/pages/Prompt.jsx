@@ -1,36 +1,25 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from "react-router-dom"
-import { doc, getDoc } from "firebase/firestore"
+import { useState } from "react"
+import { doc, getDoc, onSnapshot, setDoc } from "firebase/firestore"
 import { db } from "../firebase"
+import { useParams } from "react-router-dom"
 
 export default function Prompt() {
-  const { id } = useParams()
-  const [data, setData] = useState(null)
-  const [isPending, setIsPending] = useState(false)
-  const [error, setError] = useState(false)
+  // const [doc, setDoc] = useState(null)
 
-  useEffect(() => {
-    setIsPending(true)
-    const docRef = doc(db, "prompts", id)
-    const docSnap = getDoc(docRef).then((snapshot) => {
-      console.log(snapshot)
-    })
-  }, [])
+  // const docRef = doc(db, "prompts", "mo1Cz5aCWl2jPBwclmky")
+
+  // onSnapshot(docRef, (doc) => {
+  //   let result = []
+  //   console.log(doc.data(), doc.id)
+  //   doc.forEach(d => {
+  //     result.push({...doc.data(), id: doc.id})
+  //   })
+  //   setDoc(result)
+  // })
 
   return (
     <div className="promptCont">
-      {error && <p className="error">{error}</p>}
-      {isPending && <p className="loading">Loading...</p>}
-      {data && (
-        <>
-          <h4>{data.title}</h4>
-          <p>{data.description}</p>
-          <ul>
-            {data.tags.map(tag => <li key={tag}>{tag}</li>)}
-          </ul>
-        </>
-      )}
+      single prompt
     </div>
-    // <><h1>Hi</h1></>
   )
 }

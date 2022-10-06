@@ -1,4 +1,47 @@
-.prompt {
-  /* display: flex; */
+.prompt-cont {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  width: 75%;
+  margin: -2% auto;
+}
 
+.prompt-card {
+  /* background-color: pink; */
+  padding: 2%;
+  width: 95%;
+  /* margin: 1% auto; */
+  border-bottom: 1px solid rgb(225, 223, 223);
+}
+
+.prompt-title {
+  font-size: 1.1em;
+}
+
+.prompt-body {
+  font-size: 0.9em;
+}
+
+.prompt-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 1%;
+}
+
+.prompt-tags span {
+  font-size: .8em;
+}
+
+.prompt-tags a {
+  color: #565656;
+  text-decoration: none;
+  background: #b5c8d4;
+  font-size: 0.7em;
+  text-align: center;
+  min-width: 55px;
+  padding: 12px;
+  border-radius: 20px;
+  margin: 0.3em;
 }

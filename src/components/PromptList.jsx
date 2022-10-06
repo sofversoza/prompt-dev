@@ -1,51 +1,48 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { collection, getDocs } from "firebase/firestore"
+import React from 'react'
+import { Link, useParams } from "react-router-dom"
+import { useCollection } from "../hooks/useCollection"
 import { db } from "../firebase"
-import Navbar from './Navbar'
+import { doc, deleteDoc } from "firebase/firestore"
+import Prompt from '../pages/Prompt'
+import StyledHeader, { StyledTitle } from "./styled/StyledHeader"
+import "../styles/PromptPage.css"
+
 
 export default function PromptList() {
-  const [data, setData] = useState(null)
-  const [isPending, setIsPending] = useState(false)
-  const [error, setError] = useState(false)
+  const { documents: prompts } = useCollection("prompts")
+  let { id } = useParams()
 
-  useEffect(() => {
-    setIsPending(true)
-    const promptRef = (collection(db, "prompts"))
-
-    getDocs(promptRef).then((snapshot) => {
-      if (snapshot.empty) {
-        setError("No prompts to load")
-        setIsPending(false)
-      } else {
-        let results = []
-        snapshot.forEach((doc) => {
-          // console.log(doc.id, doc.data())
-          results.push({id: doc.id, ...doc.data()})
-        })
-        setData(results)
-        setIsPending(false)
-      }
-    }).catch(err => {
-      setError(err.message)
-      setIsPending(false)
-    })
-  }, [])
-
+  const handleDelete = async (id) => {
+    const docRef = doc(db, "prompts", id)
+    await deleteDoc(docRef)
+    // await deleteDoc(doc(db, "prompts", id))
+  }
 
   return (
     <>
-      {error && <p className="error">{error}</p>}
-      {isPending && <p className="loading">Loading...</p>}
-      {data && (
-        <>
-          <h4>{data.title}</h4>
-          <p>{data.description}</p>
-          {/* <ul>
-            {data.tags.map((tag)=> <li key={tag}>{tag}</li>)}
-          </ul> */}
-        </>
-      )}
+      <StyledHeader>
+        <StyledTitle>Prompts</StyledTitle>
+      </StyledHeader>
+      <div className="prompt-cont">
+        {prompts && prompts.map(prompt => (
+          <div 
+            key={prompt.id} 
+            className="prompt-card"
+            onClick={() => console.log(prompt.id)}
+          >
+            <h4 className="prompt-title">{prompt.title}</h4>
+            <p className="prompt-body">{prompt.body.substring(0, 100)}...</p>
+            <div className="prompt-tags">
+              <span>Tags:</span>
+              {prompt.tags && prompt.tags.map(tag => (
+                <a key={tag}>{tag}</a>
+              ))}
+            </div>
+            <p onClick={() => handleDelete(prompt.id)}>Delete</p>
+            <Link to=":id">View</Link>
+          </div>
+        ))}
+      </div>
     </>
   )
 }
