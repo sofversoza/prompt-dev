@@ -1,34 +1,36 @@
 import React from 'react'
-import { Link, useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useCollection } from "../hooks/useCollection"
+import { useAuthContext } from "../hooks/useAuthContext"
 import { db } from "../firebase"
 import { doc, deleteDoc } from "firebase/firestore"
-import Prompt from '../pages/Prompt'
-import StyledHeader, { StyledTitle } from "./styled/StyledHeader"
+import StyledHeader from "./styled/StyledHeader"
 import "../styles/PromptPage.css"
 
 
 export default function PromptList() {
-  const { documents: prompts } = useCollection("prompts")
-  let { id } = useParams()
+  const { user } = useAuthContext()
+  const { documents: prompts } = useCollection(
+    "prompts",
+    ["uid", "==", user.uid]
+  )
 
   const handleDelete = async (id) => {
     const docRef = doc(db, "prompts", id)
     await deleteDoc(docRef)
-    // await deleteDoc(doc(db, "prompts", id))
   }
 
   return (
     <>
       <StyledHeader>
-        <StyledTitle>Prompts</StyledTitle>
+        Prompts
       </StyledHeader>
       <div className="prompt-cont">
         {prompts && prompts.map(prompt => (
           <div 
             key={prompt.id} 
             className="prompt-card"
-            onClick={() => console.log(prompt.id)}
+            // onClick={() => console.log(prompt.id)}
           >
             <h4 className="prompt-title">{prompt.title}</h4>
             <p className="prompt-body">{prompt.body.substring(0, 100)}...</p>
@@ -39,7 +41,7 @@ export default function PromptList() {
               ))}
             </div>
             <p onClick={() => handleDelete(prompt.id)}>Delete</p>
-            <Link to=":id">View</Link>
+            <Link to={`${prompt.id}`}>View</Link> 
           </div>
         ))}
       </div>

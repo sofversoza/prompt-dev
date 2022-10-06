@@ -9,10 +9,8 @@ import LandingPage from "../pages/LandingPage"
 import Profile from "../pages/Profile"
 import Settings from "../pages/Settings"
 import Create from "../pages/Create"
-import Read from "./PromptList"
 import PromptList from './PromptList'
 import Prompt from '../pages/Prompt'
-import Navbar from './Navbar'
 
 function App() {
   const { user, authIsReady } = useAuthContext()

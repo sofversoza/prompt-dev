@@ -1,13 +1,22 @@
-import { useState, useEffect } from "react"
-import { collection, onSnapshot } from "firebase/firestore"
+import { useState, useEffect, useRef } from "react"
+import { collection, onSnapshot, query, where } from "firebase/firestore"
 import { db } from "../firebase"
 
-// real time collection data. c is for collection.
-export const useCollection = (c) => {
+// real time collection data. c is for collection, _q is for query
+export const useCollection = (c, _q) => {
   const [documents, setDocuments] = useState(null)
+
+  // set up query. we wrapped it in useRef so it wont trigger our useEffect when it changes value because its in the array dependency  
+  const q = useRef(_q).current
 
   useEffect(() => {
     let ref = collection(db, c)
+
+    // if there's a query (we dont have to pass it in) we'll change our ref
+    if (q) {
+      ref = query(ref, where(...q))
+    }
+
     // the 2nd argument (function) will fire everytime we get data changes in the collection, also fires once when we initially connect to it 
     const unsub = onSnapshot(ref, (snapshot) => {
       let results = []
@@ -21,7 +30,7 @@ export const useCollection = (c) => {
     return () => unsub()
 
     // c (for collection) as a dependency so when a collection changes it reruns the this whole function
-  }, [c])
+  }, [c, q])
 
   // lastly we'll return documents so we can use it in diff components
   return { documents }
