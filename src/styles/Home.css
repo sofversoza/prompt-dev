@@ -47,11 +47,12 @@ a.right-links:last-child {
 /* 🍄 🍄 🍄 HEADER STARTS 🍄 🍄 🍄*/
 .header {
   color: #333;
-  height: 30vh;
+  height: 35vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* background-color: orange; */
 }
 
 .header h1 {
@@ -71,25 +72,22 @@ a.right-links:last-child {
   padding: 0 10px;
 }
 
-.header hr {
-  width: 100%;
-  flex: 3;
-}
-
 .border-head {
   width: 100%;
   display: flex;
-  align-items: center;
+  justify-content: center;
   flex-direction: row;
 }
 /* 🍄 🍄 🍄 HEADER ENDS 🍄 🍄 🍄*/
 /* 🍄 🍄 🍄 CATEGORIES STARTS 🍄 🍄 🍄*/
 .category-links {
   display: flex;
+  height: 90px;
   color: #333;
   justify-content: center;
-  font-size: 0.8em;
-  font-weight: 400;
+  align-items: center;
+  font-size: 0.9em;
+  border: 1px solid rgb(222, 217, 217);
 }
 
 .category-links ul {
@@ -100,8 +98,6 @@ a.right-links:last-child {
 /* 🍄 🍄 🍄 HOMEPAGE STARTS 🍄 🍄 🍄*/
 .homepage {
   display: flex;
-  border-top: 0.5px solid rgb(222, 217, 217);
-  margin: 3em 0;
 }
 
 /* All Component */

@@ -3,16 +3,29 @@
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
-  width: 75%;
-  margin: -2% auto;
+  margin: 5%;
+}
+
+.options {
+  display: flex;
+  width: 86%;
+  justify-content: flex-end;
+  align-items: center;
+  margin: -3% 0 2% 0;
+}
+
+.react-icons {
+  font-size: 1.5em;
+  margin-right: 2%;
+  fill: rgb(66, 65, 65);
+  cursor: pointer;
 }
 
 .prompt-card {
-  /* background-color: pink; */
   padding: 2%;
   width: 95%;
-  /* margin: 1% auto; */
   border-bottom: 1px solid rgb(225, 223, 223);
+  cursor: pointer;
 }
 
 .prompt-title {
@@ -27,21 +40,20 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: 1%;
 }
 
-.prompt-tags span {
+.prompt-tags span, .prompt-cont span {
   font-size: .8em;
 }
 
 .prompt-tags a {
-  color: #565656;
+  color: #fff!important;
   text-decoration: none;
-  background: #b5c8d4;
+  background: rgba(97, 89, 151, 0.7);
   font-size: 0.7em;
   text-align: center;
-  min-width: 55px;
-  padding: 12px;
+  min-width: 6%;
+  padding: 6px 10px;
   border-radius: 20px;
   margin: 0.3em;
 }

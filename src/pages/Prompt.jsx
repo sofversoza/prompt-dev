@@ -3,6 +3,8 @@ import { doc, getDoc, onSnapshot } from "firebase/firestore"
 import { db } from "../firebase"
 import { useParams } from "react-router-dom"
 import StyledHeader from "../components/styled/StyledHeader"
+import { StyledSplit } from "../components/styled/StyledSplit"
+import LeftBar from "../components/LeftBar"
 import "../styles/Prompt.css"
 
 export default function Prompt() {
@@ -23,15 +25,15 @@ export default function Prompt() {
       <StyledHeader>
         Prompt
       </StyledHeader>
-      <div className="promptCont">
-        <h2>{document && document.title}</h2>
-        <p>{document && document.body}</p>
-        {/* <div>
-          {document && document.tags.map(tag => (
-            <a key={tag}>{tag}</a>
-          ))}
-        </div> */}
-      </div>
+      <StyledSplit>
+        <div className="promptCont">
+          <h2>{document && document.title}</h2>
+          <p>{document && document.body}</p>
+          <ul>
+            {document && document.tags.map(tag => <li key={tag}>{tag}</li>)}
+          </ul>
+        </div>
+      </StyledSplit>
     </>
   )
 }

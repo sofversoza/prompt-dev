@@ -15,6 +15,7 @@ html, body, #root {
 
 .App {
   min-height: 100%;
+  background-color: rgb(238, 234, 234);
 }
 
 * {
@@ -25,9 +26,14 @@ html, body, #root {
   /* outline: 1px solid red; */
 }
 
+ul {
+  margin-bottom: 0!important;
+}
+
 hr {
   border: none;
   border-top: 0.5px solid rgb(222, 217, 217);
+  margin: 1.5% auto 0 auto!important;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -49,7 +55,14 @@ button {
   background-color: rgba(97, 89, 151, 0.7);
   padding: 13px 18px;
   margin: 3% 0.5% !important;
-  /* width: 100%; */
+  /* min-width: 45%; */
+}
+
+input, textarea {
+  border: none;
+}
+input:focus, textarea:focus {
+  outline: none;
 }
 
 .loading, .error {

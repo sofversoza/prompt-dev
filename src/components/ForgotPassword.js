@@ -8,6 +8,7 @@ import { sendPasswordResetEmail } from "firebase/auth"
 function ForgotPassword() {
   const [userEmail, setUserEmail] = useState("")
 
+  const emailRef = useRef()
   const { resetPassword } = useAuth()
   const [error, setError] = useState('')
   const [message, setMessage] = useState('')
