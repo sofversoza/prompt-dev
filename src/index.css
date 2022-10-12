@@ -37,7 +37,7 @@ hr {
 }
 
 h1, h2, h3, h4, h5, h6, p {
-  margin: 0;
+  margin: 0!important;
 }
 
 p {
@@ -68,4 +68,11 @@ input:focus, textarea:focus {
 .loading, .error {
   text-align: center;
   margin: 50px auto;
+}
+
+/* GLOBAL FOR XTRA INFO TEXT LIKE (sort by) */
+h5 {
+  font-size: 0.95em!important;
+  line-height: 1.45em!important;
+  color: rgb(118, 118, 118);
 }

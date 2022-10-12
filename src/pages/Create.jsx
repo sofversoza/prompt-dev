@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
-import { useNavigate, Navigate } from 'react-router-dom'
-import { collection, addDoc } from 'firebase/firestore'
+import { useNavigate } from 'react-router-dom'
+import { collection, addDoc, Timestamp } from 'firebase/firestore'
 import { db } from '../firebase'
 import { useAuthContext } from "../hooks/useAuthContext"
 import StyledHeader from "../components/styled/StyledHeader"
@@ -9,7 +9,7 @@ import "../styles/Create.css"
 
 export default function Create() {
   const [title, setTitle] = useState("")
-  const [newPrompt, setNewPrompt] = useState("")
+  const [description, setDescription] = useState("")
   const [newTags, setNewTags] = useState("")
   const [tags, setTags] = useState([])
   const tagInput = useRef(null)
@@ -20,14 +20,14 @@ export default function Create() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const ref = collection(db, "prompts")
-    await addDoc(ref, {
+    const newP = await addDoc(ref, {
       title: title,
-      body: newPrompt,
+      body: description,
       tags: tags,
-      uid: user.uid
+      uid: user.uid,
+      created_at: Timestamp.fromDate(new Date())
     })
-    setNewPrompt("")
-    navigate("/prompts")
+    navigate(`/prompts/${newP.id}`)
   }
 
   const handleAdd = (e) => {
@@ -70,8 +70,8 @@ export default function Create() {
             <textarea 
               required
               type="text"
-              onChange={(e) => setNewPrompt(e.target.value)}
-              value={newPrompt}
+              onChange={(e) => setDescription(e.target.value)}
+              value={description}
               placeholder="Description"
               style={{display: 'block'}}
             />
@@ -86,7 +86,6 @@ export default function Create() {
                 <button onClick={handleAdd}>add</button>
                 <button onClick={handleReset}>clear tags</button>
             </div>
-            {/* <span>Lorem ipsum dolor sit amet, consectetur adip, lorem ipsum dolor</span> */}
             <p>Current tags: {tags && tags.map((t) => (
               <em key={t}>
                 {t},{" "} 

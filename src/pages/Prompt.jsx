@@ -4,7 +4,6 @@ import { db } from "../firebase"
 import { useParams } from "react-router-dom"
 import StyledHeader from "../components/styled/StyledHeader"
 import { StyledSplit } from "../components/styled/StyledSplit"
-import LeftBar from "../components/LeftBar"
 import "../styles/Prompt.css"
 
 export default function Prompt() {
@@ -24,7 +23,7 @@ export default function Prompt() {
     <>
       <StyledHeader>
         Prompt
-      </StyledHeader>
+      </StyledHeader> 
       <StyledSplit>
         <div className="promptCont">
           <h2>{document && document.title}</h2>

@@ -1,5 +1,6 @@
 import React from 'react'
-import { BsSortDownAlt, BsSortUpAlt } from "react-icons/bs"
+import { BsSortDownAlt } from "react-icons/bs"
+import { MdOutlineSort } from "react-icons/md"
 import { Link, useNavigate } from "react-router-dom"
 import { useCollection } from "../hooks/useCollection"
 import { useAuthContext } from "../hooks/useAuthContext"
@@ -8,7 +9,6 @@ import { doc, deleteDoc } from "firebase/firestore"
 import StyledHeader from "./styled/StyledHeader"
 import { StyledSplit } from "../components/styled/StyledSplit"
 import "../styles/PromptsList.css"
-
 
 export default function PromptList() {
   const { user } = useAuthContext()
@@ -35,8 +35,8 @@ export default function PromptList() {
       <StyledSplit>
         <div className="prompt-cont">
           <div className="options">
-            <BsSortDownAlt className="react-icons"/>
-            <BsSortUpAlt className="react-icons" />
+            <MdOutlineSort className="icon" />
+            <h5>SORT BY</h5>
           </div>
           {prompts && prompts.map(prompt => (
             <div 
@@ -44,8 +44,14 @@ export default function PromptList() {
               className="prompt-card"
               onClick={() => navigate(`${prompt.id}`)}
             >
+              <div className="user-info">
+                <p>Sofia <span>·</span> @denisezola <span>·</span> {" "}
+                  {prompt.created_at && prompt.created_at.toDate().toDateString()}
+                </p>
+              </div>
               <h4 className="prompt-title">{prompt.title}</h4>
               <p className="prompt-body">{prompt.body.substring(0, 500)}...</p>
+              <br />
               <span>Category: Fiction</span>
               <div className="prompt-tags">
                 <span>Tags:</span>
