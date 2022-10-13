@@ -6,6 +6,10 @@
   /* width: 80%; */
 }
 
+.prompt-cont span {
+  font-size: .85em;
+}
+
 .options {
   display: flex;
   width: 95%;
@@ -24,12 +28,16 @@
 }
 
 .user-info {
+  /* background-color: pink; */
   display: flex;
+  justify-content: flex-start;
+  gap: 0.3em;
   margin-bottom: 0.5em;
 }
 
 .user-info p {
-  font-size: .85em;
+  font-size: .90em;
+  color: rgb(227, 92, 115);
 }
 
 .prompt-card {
@@ -40,31 +48,42 @@
 }
 
 .prompt-title {
-  font-size: 1.1em;
+  font-size: 1.25em;
+}
+.prompt-text {
+  font-size: 0.95em;
 }
 
-.prompt-text {
+.prompt-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* background-color: pink; */
+}
+
+.prompt-info p {
   font-size: 0.9em;
+  margin-bottom: 0.5em!important;
 }
 
 .prompt-tags {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-}
-
-.prompt-tags span, .prompt-cont span {
-  font-size: .8em;
+  align-items: baseline;
+  gap: 6px;
 }
 
 .prompt-tags a {
   color: #fff!important;
   text-decoration: none;
   background: rgba(97, 89, 151, 0.7);
-  font-size: 0.7em;
+  font-size: 0.75em;
   text-align: center;
   min-width: 6%;
-  padding: 6px 10px;
+  padding: 6px 8px;
   border-radius: 20px;
-  margin: 0.3em;
+}
+
+.prompt-tags a:nth-child(odd) {
+  flex-grow: 1;
 }

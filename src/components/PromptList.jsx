@@ -45,19 +45,25 @@ export default function PromptList() {
               onClick={() => navigate(`${prompt.id}`)}
             >
               <div className="user-info">
-                <p>Sofia <span>·</span> @denisezola <span>·</span> {" "}
-                  {prompt.created_at && prompt.created_at.toDate().toDateString()}
-                </p>
+                <p>Sofia</p>
+                <span>·</span>
+                <p>@denisezola</p>
+                <span>·</span>
+                <p>{prompt.created_at && prompt.created_at.toDate().toDateString()}</p> 
               </div>
+
               <h4 className="prompt-title">{prompt.title}</h4>
               <p className="prompt-text">{prompt.body.substring(0, 500)}...</p>
               <br />
-              <span>Category: Fiction</span>
-              <div className="prompt-tags">
-                <span>Tags:</span>
-                {prompt.tags && prompt.tags.map(tag => (
-                  <a key={tag}>{tag}</a>
-                ))}
+              
+              <div className="prompt-info">
+                <p>Category: Fiction</p>
+                <div className="prompt-tags">
+                  <p>Tags:</p>
+                  {prompt.tags && prompt.tags.map(tag => (
+                    <a key={tag}>{tag}</a>
+                  ))}
+                </div>
               </div>
               {/* <p onClick={() => handleDelete(prompt.id)}>Delete</p> */}
             </div>
