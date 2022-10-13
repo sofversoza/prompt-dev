@@ -50,7 +50,7 @@ export default function PromptList() {
                 </p>
               </div>
               <h4 className="prompt-title">{prompt.title}</h4>
-              <p className="prompt-body">{prompt.body.substring(0, 500)}...</p>
+              <p className="prompt-text">{prompt.body.substring(0, 500)}...</p>
               <br />
               <span>Category: Fiction</span>
               <div className="prompt-tags">

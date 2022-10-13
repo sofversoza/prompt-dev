@@ -44,6 +44,9 @@ p {
   font-weight: 300;
   font-size: 1em;
   word-spacing: 1px;
+  margin-block-start: 0!important;
+  margin-block-end: 0!important;
+  
 }
 
 button {
@@ -75,4 +78,11 @@ h5 {
   font-size: 0.95em!important;
   line-height: 1.45em!important;
   color: rgb(118, 118, 118);
+}
+
+.option-icons {
+  font-size: 1.35em;
+  margin-right: 0.3em;
+  fill: rgb(118, 118, 118);
+  cursor: pointer;
 }

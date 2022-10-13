@@ -16,7 +16,6 @@ const Box = styled.div`
 `
 const StyledTitle = styled.h1`
   font-size: 2em;
-  word-spacing: 0.2em;
   margin: 1% 0 1% 0;
 `
 const Details = styled.p`
