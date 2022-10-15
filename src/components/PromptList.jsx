@@ -4,8 +4,6 @@ import { MdOutlineSort } from "react-icons/md"
 import { Link, useNavigate } from "react-router-dom"
 import { useCollection } from "../hooks/useCollection"
 import { useAuthContext } from "../hooks/useAuthContext"
-import { db } from "../firebase"
-import { doc, deleteDoc } from "firebase/firestore"
 import StyledHeader from "./styled/StyledHeader"
 import { StyledSplit } from "../components/styled/StyledSplit"
 import "../styles/PromptsList.css"
@@ -17,11 +15,6 @@ export default function PromptList() {
     ["uid", "==", user.uid]
   )
   const navigate = useNavigate()
-
-  const handleDelete = async (id) => {
-    const docRef = doc(db, "prompts", id)
-    await deleteDoc(docRef)
-  }
 
   const pageTitle = "Prompt Submissions"
   const pageDetails = "Lorem ipsum dolor sit amet, consectetur adip. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt quas ipsa laborum consectetur qui, temporibus distinctio! Officia, nisi quo quas illo voluptatibus blanditiis iusto cupiditate"
@@ -57,15 +50,14 @@ export default function PromptList() {
               <br />
               
               <div className="prompt-info">
-                <p>Category: Fiction</p>
+                {/* <p>Category: Fiction</p> */}
                 <div className="prompt-tags">
-                  <p>Tags:</p>
+                  {/* <p>Tags:</p> */}
                   {prompt.tags && prompt.tags.map(tag => (
                     <a key={tag}>{tag}</a>
                   ))}
                 </div>
               </div>
-              {/* <p onClick={() => handleDelete(prompt.id)}>Delete</p> */}
             </div>
           ))}
         </div>

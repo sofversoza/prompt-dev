@@ -20,6 +20,10 @@
   /* background-color: pink; */
 }
 
+.options h5 {
+  cursor: pointer;
+}
+
 .icon {
   font-size: 1.35em;
   margin-right: 0.3em;
@@ -52,6 +56,8 @@
 }
 .prompt-text {
   font-size: 0.95em;
+  max-width: 95%;
+  /* background-color: pink; */
 }
 
 .prompt-info {
@@ -62,7 +68,7 @@
 }
 
 .prompt-info p {
-  font-size: 0.9em;
+  font-size: 0.85em;
   margin-bottom: 0.5em!important;
 }
 
@@ -70,7 +76,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 6px;
+  justify-content: flex-start;
+  max-width: 95%;
+  gap: 4px;
 }
 
 .prompt-tags a {
@@ -80,10 +88,11 @@
   font-size: 0.75em;
   text-align: center;
   min-width: 6%;
-  padding: 6px 8px;
+  padding: 8px 10px;
   border-radius: 20px;
+  /* flex-grow: 1; */
 }
 
-.prompt-tags a:nth-child(odd) {
+.prompt-tags a:nth-child(even) {
   flex-grow: 1;
 }
