@@ -51,7 +51,6 @@ export default function Prompt() {
               <p>Published on{" "} 
                 <span>{document && document.created_at.toDate().toDateString()}</span>
               </p>
-              <p>Category: <span>Fiction</span></p>
             </div>
 
             <div className="prompt-body">

@@ -36,12 +36,15 @@
   display: flex;
   justify-content: flex-start;
   gap: 0.3em;
-  margin-bottom: 0.5em;
 }
 
 .user-info p {
   font-size: .90em;
-  color: rgb(227, 92, 115);
+  color: #ba233c;
+}
+
+.user-info span {
+  font-size: 1em;
 }
 
 .prompt-card {
@@ -52,7 +55,11 @@
 }
 
 .prompt-title {
-  font-size: 1.25em;
+  font-size: 1.5em;
+  font-family: "essonnes-headline", serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5em;
 }
 .prompt-text {
   font-size: 0.95em;

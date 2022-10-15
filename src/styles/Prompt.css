@@ -47,14 +47,19 @@
   padding: 2%;
 }
 .prompt-intro h2 {
+  font-family: "essonnes-headline", serif;
+  font-weight: 300;
+  font-style: normal;
   font-size: 3em;
   margin-bottom: -0.5%!important;
 }
 .prompt-intro p {
   font-size: 0.9em;
+  color: #797575;
 }
 .prompt-intro span {
-  color: rgb(244, 143, 160);
+  text-transform: uppercase;
+  color: #ba233c;
 }
 .prompt-body {
   /* background-color: pink; */
@@ -64,12 +69,16 @@
   justify-content: center;
 }
 .prompt-body p {
-  font-size: 1.2em;
+  font-size: 1.1em;
   line-height: 1.3em;
   width: 95%;
+  word-spacing: 1.5px;
 }
 .prompt-body p::first-letter {
-  font-size: 4em;
+  font-family: "essonnes-headline", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3em;
   text-transform: uppercase;
   padding: 1.2% 1% 0.1em 0;
   float: left;
@@ -80,8 +89,9 @@
   justify-content: flex-start;
 }
 .prompt-deets p {
-  font-size: 1em;
-  margin-right: 1%!important ;
+  margin-right: 1%!important;
+  font-size: 0.9em;
+  color: #797575;
 }
 .p-tags {
   display: flex;

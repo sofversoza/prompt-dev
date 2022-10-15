@@ -16,6 +16,5 @@ export const useDocument = (c, id) => {
 
   }, [c, id])
 
-
   return { document }
 }

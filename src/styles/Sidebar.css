@@ -23,13 +23,13 @@
 
 .icons {
   fill: rgb(118, 118, 118);
-  font-size: 1.8em;
+  font-size: 1.5em;
   margin: 1em auto;
   cursor: pointer;
 }
 
 .smaller {
-  font-size: 1.55em!important;
+  font-size: 1.3em!important;
 }
 
 .icon-themes {

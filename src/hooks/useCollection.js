@@ -29,7 +29,7 @@ export const useCollection = (c, _q) => {
     // a clean up function so we can unsub from realtime db (onSnapshot) when a component unmounts
     return () => unsub()
 
-    // c (for collection) as a dependency so when a collection changes it reruns the this whole function
+    // c (for collection) as a dependency so when a collection changes it reruns this whole function
   }, [c, q])
 
   // lastly we'll return documents so we can use it in diff components

@@ -5,8 +5,8 @@ import { doc, updateDoc, arrayUnion, arrayRemove, serverTimestamp } from "fireba
 import "../styles/Create.css"
 
 export default function Update({ document, setUpdateDoc }) {
-  const [newTitle, setNewTitle] = useState("")
-  const [newDescription, setNewDescription] = useState("")
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
   const [newTags, setNewTags] = useState("")
   const [tags, setTags] = useState([])
   const tagInput = useRef()
@@ -16,9 +16,9 @@ export default function Update({ document, setUpdateDoc }) {
   const handleUpdate = async (e) => {
     e.preventDefault()
     const docRef = doc(db, "prompts", id)
-    const updatedDoc = await updateDoc(docRef, {
-      title: newTitle,
-      body: newDescription,
+    await updateDoc(docRef, {
+      title: title,
+      body: description,
       tags: tags,
       updated_at: serverTimestamp()
     })
@@ -47,16 +47,18 @@ export default function Update({ document, setUpdateDoc }) {
       <form onSubmit={handleUpdate} className="create-form">
         <input 
           type="text" 
-          value={newTitle}
-          onChange={(e) => setNewTitle(e.target.value)}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          defaultValue={document.title}
           placeholder={document.title}
           style={{display: 'block'}}
         />
         <textarea 
           type="text"
-          onChange={(e) => setNewDescription(e.target.value)}
-          value={newDescription}
+          onChange={(e) => setDescription(e.target.value)}
+          value={description}
           placeholder={document.body}
+          defaultValue={document.body}
           style={{display: 'block'}}
         />
 
@@ -64,7 +66,8 @@ export default function Update({ document, setUpdateDoc }) {
           <label>Tags:</label>
             <input 
               type="text" 
-              placeholder="Leave blank to keep current tags below"
+              placeholder={document.tags}
+              defaultValue={document.tags}
               onChange={(e) => setNewTags(e.target.value)}
               value={newTags}
               ref={tagInput}
