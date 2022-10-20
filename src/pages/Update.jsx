@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useNavigate, useParams } from "react-router-dom"
 import { db } from "../firebase"
 import { doc, updateDoc, arrayUnion, arrayRemove, serverTimestamp } from "firebase/firestore"
@@ -13,6 +13,13 @@ export default function Update({ document, setUpdateDoc }) {
   const navigate = useNavigate()
   const { id } = useParams()
 
+  // setting new input values to doc's og values
+  useEffect(() => {
+    setTitle(document.title)
+    setDescription(document.body)
+    setTags(document.tags)
+  }, [])
+
   const handleUpdate = async (e) => {
     e.preventDefault()
     const docRef = doc(db, "prompts", id)
@@ -23,7 +30,6 @@ export default function Update({ document, setUpdateDoc }) {
       updated_at: serverTimestamp()
     })
     setUpdateDoc(false)
-    // navigate(`/prompts/${id}`)
   }
 
   const handleAdd = (e) => {
@@ -49,16 +55,12 @@ export default function Update({ document, setUpdateDoc }) {
           type="text" 
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          defaultValue={document.title}
-          placeholder={document.title}
           style={{display: 'block'}}
         />
         <textarea 
           type="text"
           onChange={(e) => setDescription(e.target.value)}
           value={description}
-          placeholder={document.body}
-          defaultValue={document.body}
           style={{display: 'block'}}
         />
 
@@ -66,8 +68,6 @@ export default function Update({ document, setUpdateDoc }) {
           <label>Tags:</label>
             <input 
               type="text" 
-              placeholder={document.tags}
-              defaultValue={document.tags}
               onChange={(e) => setNewTags(e.target.value)}
               value={newTags}
               ref={tagInput}
