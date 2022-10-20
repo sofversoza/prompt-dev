@@ -40,7 +40,7 @@ export default function Prompt() {
                 <h5><IoOptions className="option-icons" />OPTIONS</h5>
                 <div className="dropdown-content">
                   <p onClick={() => setUpdateDoc(true)}>Edit prompt</p>
-                  <p onClick={() => handleDelete(document)}>Delete prompt</p>
+                  <p onClick={() => handleDelete()}>Delete prompt</p>
                 </div>
               </div>
             </div>
@@ -49,7 +49,8 @@ export default function Prompt() {
               <h2>{document && document.title}</h2>
               <p>Prompt by <span>{document && document.uid}</span></p>
               <p>Published on{" "} 
-                <span>{document && document.created_at.toDate().toDateString()}</span>
+                {/* <span>{document && document.created_at.toDate().toDateString()}</span> */}
+                <span>{document && document.created_at && document.created_at.toDate().toDateString()}</span>
               </p>
             </div>
 
@@ -61,7 +62,7 @@ export default function Prompt() {
             <div className="prompt-deets">
               <p>Tags:</p>
               <div className="p-tags">
-                {document && document.tags.map(tag => <a key={tag}>{tag}</a>)}
+                {document && document.tags && document.tags.map(tag => <a key={tag}>{tag}</a>)}
               </div>
             </div>
           </div>
