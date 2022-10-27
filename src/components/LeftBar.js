@@ -13,11 +13,11 @@ export default function RightBar() {
   return (
     <div className="leftbar">
       <div className="icon-cont">
-        <Link to="/create">
-          <ImQuill className="icons smaller" />
-        </Link>
         <Link to="/">
           <ImHome3 className="icons smaller" />
+        </Link>
+        <Link to="/create">
+          <ImQuill className="icons smaller" />
         </Link>
         <Link to="/prompts">
           <GiSpellBook className="icons" />

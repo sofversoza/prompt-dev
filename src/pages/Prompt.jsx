@@ -48,10 +48,10 @@ export default function Prompt() {
             <div className="prompt-intro">
               <h2>{document && document.title}</h2>
               <p>Prompt by <span>{document && document.uid}</span></p>
-              <p>Published on{" "} 
-                {/* <span>{document && document.created_at.toDate().toDateString()}</span> */}
+              <p>Published on{" "}
                 <span>{document && document.created_at && document.created_at.toDate().toDateString()}</span>
               </p>
+              <p>Category: {document && document.category}</p>
             </div>
 
             <div className="prompt-body">

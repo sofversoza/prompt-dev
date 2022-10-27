@@ -44,6 +44,7 @@ a.right-links:last-child {
   text-decoration: none;
 }
 /* 🍄 🍄 🍄 NAVBAR ENDS 🍄 🍄 🍄*/
+
 /* 🍄 🍄 🍄 HEADER STARTS 🍄 🍄 🍄*/
 .header {
   color: #333;
@@ -52,7 +53,7 @@ a.right-links:last-child {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* background-color: orange; */
+  border: 0.5px solid rgb(222, 217, 217);
 }
 
 .header h1 {
@@ -79,22 +80,7 @@ a.right-links:last-child {
   flex-direction: row;
 }
 /* 🍄 🍄 🍄 HEADER ENDS 🍄 🍄 🍄*/
-/* 🍄 🍄 🍄 CATEGORIES STARTS 🍄 🍄 🍄*/
-.category-links {
-  display: flex;
-  height: 90px;
-  color: #333;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.9em;
-  border: 1px solid rgb(222, 217, 217);
-}
 
-.category-links ul {
-  list-style: none;
-  cursor: pointer;
-}
-/* 🍄 🍄 🍄 CATEGORIES ENDS 🍄 🍄 🍄*/
 /* 🍄 🍄 🍄 HOMEPAGE STARTS 🍄 🍄 🍄*/
 .homepage {
   display: flex;
@@ -108,5 +94,4 @@ a.right-links:last-child {
   justify-content: center;
   padding: 5% 3%;
 }
-
 /* 🍄 🍄 🍄 HOMEPAGE ENDS 🍄 🍄 🍄*/

@@ -1,7 +1,6 @@
 import React from 'react'
-import { BsSortDownAlt } from "react-icons/bs"
 import { MdOutlineSort } from "react-icons/md"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useCollection } from "../hooks/useCollection"
 import { useAuthContext } from "../hooks/useAuthContext"
 import StyledHeader from "./styled/StyledHeader"
@@ -50,9 +49,7 @@ export default function PromptList() {
               <br />
               
               <div className="prompt-info">
-                {/* <p>Category: Fiction</p> */}
                 <div className="prompt-tags">
-                  {/* <p>Tags:</p> */}
                   {prompt.tags && prompt.tags.map(tag => (
                     <a key={tag}>{tag}</a>
                   ))}

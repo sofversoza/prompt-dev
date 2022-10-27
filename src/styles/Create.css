@@ -23,6 +23,17 @@
   padding: 2%;
 }
 
+.select-cont {
+  max-width: 200px;
+  margin: 3% 0;
+}
+
+.select-cont select {
+  width: 100%;
+  border: none;
+  padding: 5px;
+}
+
 .tags {
   display: flex;
   align-items: center;

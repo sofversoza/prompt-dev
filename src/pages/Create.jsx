@@ -10,10 +10,10 @@ import "../styles/Create.css"
 export default function Create() {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
+  const [category, setCategory] = useState("Poem")
   const [newTags, setNewTags] = useState("")
   const [tags, setTags] = useState([])
   const tagInput = useRef(null)
-
   const navigate = useNavigate()
   const { user } = useAuthContext()
 
@@ -23,6 +23,7 @@ export default function Create() {
     const newP = await addDoc(ref, {
       title: title,
       body: description,
+      category: category,
       tags: tags,
       uid: user.uid,
       created_at: Timestamp.fromDate(new Date())
@@ -44,6 +45,11 @@ export default function Create() {
   const handleReset = (e) => {
     e.preventDefault()
     setTags("")
+  }
+
+  const handleChange = (e) => {
+    const selectedCategory = e.target.value
+    setCategory(selectedCategory)
   }
 
   const pageTitle = "Compose"
@@ -75,6 +81,17 @@ export default function Create() {
               placeholder="Description"
               style={{display: 'block'}}
             />
+            <div className="select-cont">
+              <p>Select category:</p>
+              <select value={category} onChange={handleChange}>
+                <option value="poem">Poem</option>
+                <option value="loveletter">Love Letter</option>
+                <option value="persuasive">Persuasive</option>
+                <option value="expository">Expository</option>
+                <option value="narrative">Narrative</option>
+                <option value="literary">Literary Analysis</option>
+              </select>
+            </div>
             <div className="tags">
               <label>Tags:</label>
                 <input 
