@@ -28,6 +28,7 @@ html, body, #root {
 
 ul {
   margin-bottom: 0!important;
+  padding-inline-start: 0!important;
 }
 
 hr {

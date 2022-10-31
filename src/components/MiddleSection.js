@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import { useCollection } from "../hooks/useCollection"
 import "../styles/MiddleSection.css"
 
 export default function MiddleSection() {
+  const [selectedCategory, setSelectedCategory] = useState("")
   const navigate = useNavigate()
   const categories = ["Poem", "Love Letter", "Persuasive", "Expository", "Narrative", "Literary Analysis"]
 
