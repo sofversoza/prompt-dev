@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   margin: 5%;
-  /* width: 80%; */
 }
 
 .prompt-cont span {
@@ -17,7 +16,6 @@
   align-items: center;
   margin: -3% 0 3% 0;
   padding: 0 2%;
-  /* background-color: pink; */
 }
 
 .options h5 {
@@ -32,7 +30,6 @@
 }
 
 .user-info {
-  /* background-color: pink; */
   display: flex;
   justify-content: flex-start;
   gap: 0.3em;
@@ -64,14 +61,12 @@
 .prompt-text {
   font-size: 0.95em;
   max-width: 95%;
-  /* background-color: pink; */
 }
 
 .prompt-info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* background-color: pink; */
 }
 
 .prompt-info p {

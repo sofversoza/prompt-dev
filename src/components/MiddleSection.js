@@ -1,40 +1,84 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom"
-import { useCollection } from "../hooks/useCollection"
 import "../styles/MiddleSection.css"
+import "../styles/PromptsList.css"
 
-export default function MiddleSection() {
-  const [selectedCategory, setSelectedCategory] = useState("")
+export default function MiddleSection({ prompts, allCats }) {
+  const [filteredPrompts, setFilteredPrompts] = useState(prompts)
   const navigate = useNavigate()
-  const categories = ["Poem", "Love Letter", "Persuasive", "Expository", "Narrative", "Literary Analysis"]
 
-  const { documents: prompts } = useCollection(
-    "prompts",
-    ["category", "==", "Poem"]
-  )
+  const filter = (button) => {
+    if (button === "All") {
+      setFilteredPrompts(prompts)
+      return
+    }
+    const selectedCategory = prompts.filter(prompt => prompt.category === button)
+    setFilteredPrompts(selectedCategory)
+  }
 
   return (
     <div className="ms-container">
       <div className="category-links">
-        {categories.map(c => (
-          <ul key={c}>
-            <li>{c}</li>
-          </ul>
-        ))}
+        {/* <button type="button" onClick={() => filter("Poem")}>Poem</button> */}
+        {allCats.map((cat, i) => {
+          return (
+            <button 
+              key={i} 
+              type="button" 
+              className="btn-category"
+              onClick={() => filter(cat)}
+            >
+              {cat}
+            </button>
+          )
+        })}
       </div>
+
       <div className="ms-prompts">
-        {prompts && prompts.map(prompt => (
+        {!filteredPrompts ? prompts && prompts.map(prompt => (
           <div
             key={prompt.id}
-            className="prompt-box"
+            className="prompt-card"
             onClick={() => navigate(`prompts/${prompt.id}`)}
           >
-            <div className="info">
+            <div className="user-info">
               <p>Sofia Versoza</p>
               <span>·</span>
               <p>{prompt.created_at && prompt.created_at.toDate().toDateString()}</p> 
             </div>
-            <h5>{prompt.title}</h5>
+            <h4 className="prompt-title">{prompt.title}</h4>
+            <p className="prompt-text">{prompt.body.substring(0, 100)}...</p>
+
+            <div className="prompt-info" style={{ marginTop: "2%" }}>
+              <div className="prompt-tags">
+                {prompt.tags && prompt.tags.map(tag => (
+                  <a key={tag}>{tag}</a>
+                ))}
+              </div>
+            </div>
+          </div>
+          
+        )) : filteredPrompts && filteredPrompts.map(prompt => (
+          <div
+            key={prompt.id}
+            className="prompt-card"
+            onClick={() => navigate(`prompts/${prompt.id}`)}
+          >
+            <div className="user-info">
+              <p>Sofia Versoza</p>
+              <span>·</span>
+              <p>{prompt.created_at && prompt.created_at.toDate().toDateString()}</p> 
+            </div>
+            <h4 className="prompt-title">{prompt.title}</h4>
+            <p className="prompt-text">{prompt.body.substring(0, 100)}...</p>
+
+            <div className="prompt-info" style={{ marginTop: "2%" }}>
+              <div className="prompt-tags">
+                {prompt.tags && prompt.tags.map(tag => (
+                  <a key={tag}>{tag}</a>
+                ))}
+              </div>
+            </div>
           </div>
         ))}
       </div>

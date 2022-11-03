@@ -7,6 +7,7 @@ import "../styles/Create.css"
 export default function Update({ document, setUpdateDoc }) {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
+  const [category, setCategory] = useState("")
   const [newTags, setNewTags] = useState("")
   const [tags, setTags] = useState([])
   const tagInput = useRef()
@@ -17,6 +18,7 @@ export default function Update({ document, setUpdateDoc }) {
   useEffect(() => {
     setTitle(document.title)
     setDescription(document.body)
+    setCategory(document.category)
     setTags(document.tags)
   }, [])
 
@@ -26,6 +28,7 @@ export default function Update({ document, setUpdateDoc }) {
     await updateDoc(docRef, {
       title: title,
       body: description,
+      category: category,
       tags: tags,
       updated_at: serverTimestamp()
     })
@@ -47,6 +50,11 @@ export default function Update({ document, setUpdateDoc }) {
     e.preventDefault()
     setTags("")
   }
+
+  const handleChange = (e) => {
+    const selectedCategory = e.target.value
+    setCategory(selectedCategory)
+  }
   
   return (
     <div className="page-container">
@@ -63,6 +71,18 @@ export default function Update({ document, setUpdateDoc }) {
           value={description}
           style={{display: 'block'}}
         />
+
+        <div className="select-cont">
+          <p>Select category:</p>
+          <select value={category} onChange={handleChange}>
+            <option value="poem">Poem</option>
+            <option value="loveletter">Love Letter</option>
+            <option value="persuasive">Persuasive</option>
+            <option value="expository">Expository</option>
+            <option value="narrative">Narrative</option>
+            <option value="literary">Literary Analysis</option>
+          </select>
+        </div>
 
         <div className="tags">
           <label>Tags:</label>
