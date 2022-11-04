@@ -5,6 +5,7 @@ import { useSignup } from "../hooks/useSignup"
 import "../styles/Forms.css"
 
 function Signup() {
+  const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPass, setConfirmPass] = useState("")
@@ -21,6 +22,13 @@ function Signup() {
         <h2>Join prompt.</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <form onSubmit={handleSubmit}>
+          <input 
+            required
+            type="name"
+            placeholder="Name"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+          />
           <input 
             required
             type='email' 

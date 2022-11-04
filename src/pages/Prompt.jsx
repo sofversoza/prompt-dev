@@ -23,6 +23,7 @@ export default function Prompt() {
 
   // const pageTitle = ""
   const pageDetails = "Lorem ipsum dolor sit amet, consectetur adip. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt quas ipsa laborum consectetur qui, temporibus distinctio! Officia, nisi quo quas illo voluptatibus blanditiis iusto cupiditate"
+  console.log(document)
 
   return (
     <>

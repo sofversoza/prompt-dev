@@ -24,5 +24,5 @@ export const useSignup = () => {
   }
 
   // these are what we can grab from diff comps to use this hook
-  return { error, loading, signup}
+  return { error, loading, signup }
 }
