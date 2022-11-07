@@ -29,20 +29,20 @@
   font-weight: 200;
   cursor: pointer;
   border: none;
-  background-color: rgba(97, 89, 151, 0.7);
+  background-color: var(--primary-color);
   padding: 13px 18px;
   margin: 5% 0;
   width: 100%;
 }
 .form button:hover {
-  background-color: rgba(97, 89, 151, 0.55);
+  background-color: var(--primary-highlight);
 }
 
 .form a {
-  color: rgba(97, 89, 151, 0.8);
+  color: var(--primary-color);
 }
 .form a:hover {
-  color: rgba(97, 89, 151, 0.6);
+  color: var(--primary-highlight);
 }
 
 .form ::placeholder {

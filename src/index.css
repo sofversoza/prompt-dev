@@ -9,13 +9,28 @@
   src: url("../src/assets/BROLIMO-Regular.woff") format("woff");
 }
 
+/* variables */
+:root {
+  --primary-color: #777EA6;
+  --primary-highlight: #616994;
+  --secondary-color: ;
+  --secondary-highlight: ;
+  --heading-color: #3a3a3a;
+  --text-color: #5d5b5b;
+  --text-info: #797575;
+  --text-info-value: #ac2e2ee6;
+  --accent-color: #767676;
+  --bg-color: #DEDEE3;
+}
+
 html, body, #root {
   height: 100%;
+  background-color: var(--bg-color);
 }
 
 .App {
   min-height: 100%;
-  background-color: rgb(238, 234, 234);
+  background-color: var(--bg-color);
 }
 
 * {
@@ -23,7 +38,6 @@ html, body, #root {
   box-sizing: border-box;
   font-family: 'Karla', sans-serif;
   font-weight: 400;
-  /* outline: 1px solid red; */
 }
 
 ul {
